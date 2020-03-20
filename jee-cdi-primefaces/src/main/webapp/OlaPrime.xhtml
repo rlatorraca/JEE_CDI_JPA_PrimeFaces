@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:jsf="http://java.sun.com/jsf/html"
+	  xmlns:pf="http://primefaces.org/ui"
+	  xmlns:facet="http://java.sun.com/jsf/core">
+
+<jsf:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</jsf:head>
+
+<jsf:body>
+
+	<jsf:form>
+		<jsf:panelGrid columns="2">
+			<facet:facet name="header">Cadastro de Pessoas</facet:facet>
+			<jsf:outputLabel value="Nome"/>
+			<jsf:inputText/>
+			
+			<jsf:outputLabel value="Data de Nascimento"/>
+			<jsf:inputText/>
+			
+			<facet:facet name="footer">
+				<jsf:commandButton value="Cadastrar"/>
+			</facet:facet>
+			
+			
+		</jsf:panelGrid>
+		
+		<br/><br/>
+		
+		<pf:messages/>
+		<pf:panelGrid columns="2">
+			<facet:facet name="header">Cadastro de Pessoas</facet:facet>
+			
+			<pf:outputLabel value="Nome do Cliente" for="nome"/>
+			<pf:inputText id="nome" required="true" value="#{cadastroAlunoBean.nome}"/>
+			
+			<pf:outputLabel value="E-mail do Cliente" for="email"/>
+			<pf:inputText id="email" required="true" value="#{cadastroAlunoBean.email}"/>
+			
+			<pf:outputLabel value="Data de Nascimento"/>
+			<pf:calendar/>
+		
+			<facet:facet name="footer">
+				<!-- usa do end https://jqueryui.com/themeroller/ para os ICONES-->
+				<pf:commandButton value="Cadastrar" ajax="false" icon="ui-icon-disk" iconPos="right" action="#{cadastroAlunoBean.cadastrarAluno}"/>
+			</facet:facet>	
+		</pf:panelGrid>
+		
+		
+	</jsf:form>
+	
+</jsf:body>
+</html>
