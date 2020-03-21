@@ -1,4 +1,4 @@
-package com.rlsp.jee_cdi_primefaces;
+package com.rlsp.jee_cdi_primefaces_Demo;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;

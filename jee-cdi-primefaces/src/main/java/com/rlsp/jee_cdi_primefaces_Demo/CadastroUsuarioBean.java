@@ -1,4 +1,4 @@
-package com.rlsp.jee_cdi_primefaces;
+package com.rlsp.jee_cdi_primefaces_Demo;
 
 import java.io.Serializable;
 
@@ -30,14 +30,16 @@ public class CadastroUsuarioBean implements Serializable {
 		
 		if ("joao".equalsIgnoreCase(this.login)) {
 			System.out.println("Eh JOAO");
-			msg = new FacesMessage("Login já está em uso.");
-			msg.setSeverity(FacesMessage.SEVERITY_WARN);
+			//msg = new FacesMessage("Login já está em uso.");
+			//msg.setSeverity(FacesMessage.SEVERITY_WARN);
+			FacesContext.getCurrentInstance().addMessage("frm", new FacesMessage(FacesMessage.SEVERITY_WARN,"Login esta em uso.",null));
 		} else {
 			System.out.println("Else JOAO");
-			msg = new FacesMessage("Login disponível.");
+			//msg = new FacesMessage("Login disponível.");
+			FacesContext.getCurrentInstance().addMessage("frm", new FacesMessage("Login disponível."));
 		}
 		
-		FacesContext.getCurrentInstance().addMessage("frm", new FacesMessage("Login disponível."));
+		//FacesContext.getCurrentInstance().addMessage("frm", new FacesMessage("Login disponível."));
 	}
 	
 	public void cadastrar() {
