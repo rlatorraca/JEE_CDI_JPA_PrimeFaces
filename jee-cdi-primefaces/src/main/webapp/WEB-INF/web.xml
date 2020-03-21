@@ -17,5 +17,11 @@
   <context-param>
 	<param-name>primefaces.FONT_AWESOME</param-name>
 	<param-value>true</param-value>
-</context-param>
+  </context-param>
+
+  <!-- Usa a SUBMISSAO PARCIAL das partes AJAX do formulario -->
+	<context-param>
+		<param-name>primefaces.SUBMIT</param-name>
+		<param-value>partial</param-value>
+	</context-param>
 </web-app>
