@@ -138,6 +138,7 @@ public class FormularioPrimeFacesBean implements Serializable {
 
 	        
 	        //conversation.end();
+	        System.out.println("Teste");
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastrado com sucesso!"));
 	    }
 
