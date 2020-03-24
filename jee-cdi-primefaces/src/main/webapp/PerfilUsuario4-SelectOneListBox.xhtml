@@ -27,7 +27,8 @@
 			
 			<p:outputLabel value="Interesse" for="interesse" />
 			<p:selectOneListbox id="interesse" value="#{perfilUsuarioBean.interesse}" required="true" converter="interesseConversor" var="i" style="width: 200px">
-				<f:selectItems value="#{perfilUsuarioBean.interesses}" var="interesse" itemLabel="#{interesse.descricao}" itemValue="#{interesse}" />				
+				<f:selectItems value="#{perfilUsuarioBean.interesses}" var="interesse" 
+				    itemLabel="#{interesse.descricao}" itemValue="#{interesse}" />				
 					<p:column>
 						<h:graphicImage library="imagens" name="#{i.nomeIcone}.jpg"/>
 					</p:column>
