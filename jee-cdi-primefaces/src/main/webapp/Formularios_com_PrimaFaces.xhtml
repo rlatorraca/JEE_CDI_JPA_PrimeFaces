@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<script>
+	PrimeFaces.locales['pt'] = {
+	    closeText: 'Fechar',
+	    prevText: 'Anterior',
+	    nextText: 'Próximo',
+	    currentText: 'Começo',
+	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+	    dayNamesMin: ['D','S','T','Q','Q','S','S'],
+	    weekHeader: 'Semana',
+	    firstDay: 0,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: '',
+	    timeOnlyTitle: 'Só Horas',
+	    timeText: 'Tempo',
+	    hourText: 'Hora',
+	    minuteText: 'Minuto',
+	    secondText: 'Segundo',
+	    ampm: false,
+	    month: 'Mês',
+	    week: 'Semana',
+	    day: 'Dia',
+	    allDayText : 'Todo o Dia'
+	};
+	PrimeFaces.locales ['fr'] = { 
+		closeText: 'Fermer', 
+		prevText: 'Précédent', 
+		nextText: 'Suivant', 
+		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ], 
+		monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ], 
+		dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'], 
+		dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'], 
+		dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'], 
+		weekHeader: 'Semaine', 
+		firstDay: 1, 
+		isRTL: false, 
+		showMonthAfterYear: false, 
+		yearSuffix:'', 
+		timeOnlyTitle: 'Choisir l\'heure', 
+		timeText: 'Heure', 
+		hourText: 'Heures', 
+		minuteText: 'Minutes', 
+		secondText: 'Secondes', 
+		currentText: 'Maintenant', 
+		ampm: false, 
+		month: 'Mois', 
+		week: 'Semaine', 
+		day: 'Jour', 
+		allDayText: 'Toute la journée' 
+	};
+	</script>
+		
+	<style>
+		.sem-bordas td {
+			border: none;
+			padding: 5px;
+		}
+	</style>
+	
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Contrato de Treinamentos</h1>
+	<hr></hr>
+
+	 <h:form id="frm">
+        <p:messages/>
+
+        <h2>Cadastro de contrato de treinamentos </h2>
+        <!--styleClass="ui-noborder"-->
+
+        <p:tabView>
+
+            <p:tab title="Dados principais">
+                <p:panelGrid columns="2" cellpadding="4">
+                    <p:outputLabel value="Razão social" for="razaoSocial"/>
+                    <p:inputText id="razaoSocial" value="#{formularioPrimeFacesBean.razaoSocial}" required="true"/>
+
+                    <p:outputLabel value="CNPJ" for="cnpj"/>
+                    <p:inputMask id="cnpj" value="#{formularioPrimeFacesBean.cnpj}" mask="99.999.999/9999-99"
+                                 required="true"/>
+
+                    <p:outputLabel value="Cidade do contrato" for="cidadeContrato"/>
+                    <p:autoComplete id="cidadeContrato" value="#{formularioPrimeFacesBean.cidade}"
+                                    completeMethod="#{formularioPrimeFacesBean.sugerirCidades}"
+                                    forceSelection="true" minQueryLength="1"/>
+
+                    <p:outputLabel value="Modalidade" for="modalidade"/>
+                    <p:selectOneRadio id="modalidade" required="true" value="#{formularioPrimeFacesBean.modalidade}">
+                        <f:selectItem itemLabel="EAD" itemValue="EAD"/>
+                        <f:selectItem itemLabel="Presencial" itemValue="Presencial"/>
+                    </p:selectOneRadio>
+
+                </p:panelGrid>
+            </p:tab>
+
+            <p:tab title="Contrato">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Data do contrato" for="dataContrato"/>
+                    <p:calendar id="dataContrato" required="true"
+                                value="#{formularioPrimeFacesBean.dataContrato}" pattern="dd/mm/yyyy"
+                                readonlyInput="true" navigator="false" pages="1" mode="popup"
+                                maxdate="#{formularioPrimeFacesBean.dataHoje}" locale="pt"/>
+
+                    <p:outputLabel value="Valor do contrato" for="valorContrato"/>
+                    <p:inputText id="valorContrato" value="#{formularioPrimeFacesBean.valorContrato}" required="true"/>
+
+                    <p:outputLabel value="Método de pagamento" for="metodoPag"/>
+                    <p:selectOneMenu id="metodoPag" value="#{formularioPrimeFacesBean.metodoPagamento}">
+                        <p:ajax event="change" process="metodoPag" update="formaPag"
+                                listener="#{formularioPrimeFacesBean.carregarPagamentos}"/>
+                        <f:selectItem itemLabel="Selecione"/>
+                        <f:selectItems value="#{formularioPrimeFacesBean.metodosPagamentos}" var="metodoPag"
+                                       itemLabel="#{metodoPag}" itemValue="#{metodoPag}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Forma de pagamento" for="formaPag"/>
+                    <p:selectOneMenu id="formaPag" value="#{formularioPrimeFacesBean.formaPagamento}">
+                        <f:selectItem itemLabel="Selecione"/>
+                        <f:selectItems value="#{formularioPrimeFacesBean.formasPagamentos}" var="formaPag"
+                                       itemLabel="#{formaPag}" itemValue="#{formaPag}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </p:tab>
+
+
+            <p:tab title="Cursos">
+                <p:panelGrid columns="2">
+                    <h:panelGroup>
+                        <h1/>
+                        <p:outputLabel value="Cursos contratados" for="cursosContratados"/>
+                        <h1/>
+
+                        <p:selectManyCheckbox id="cursosContratados" value="#{formularioPrimeFacesBean.cursosContratados}"
+                                              layout="pageDirection" required="true">
+                            <f:selectItem itemLabel="Fundamentos Java e Orientação a Objetos" itemValue="FundamentosJAVA"/>
+                            <f:selectItem itemLabel="Desenvolvimento Web com JSF 2" itemValue="WebJSF2"/>
+                            <f:selectItem itemLabel="Persistência de Dados com JPA 2 e Hibernate" itemValue="JPA2Hibernate"/>
+                            <f:selectItem itemLabel="Gerenciamento Ágil de Projetos com Scrum" itemValue="ProjetosAgeis"/>
+                        </p:selectManyCheckbox>
+                    </h:panelGroup>
+                </p:panelGrid>
+            </p:tab>
+        </p:tabView>
+
+
+        <p:commandButton action="#{formularioPrimeFacesBean.cadastrar}" value="Cadastrar" update="@form"/>
+        
+        <p:dataTable value="#{formularioPrimeFacesBean.contratos}" var="contrato" rows="10" paginator="true">
+        	<p:column headerText="Razao Social" filterBy="#{contrato.razaoSocial}">
+        		<h:outputText value="#{contrato.razaoSocial}" />
+        	</p:column>
+        	
+        	<p:column headerText="CNPJ">
+        		<h:outputText value="#{contrato.cnpj}" />
+        	</p:column>
+        	
+        	<p:column headerText="Cidade do contrato" filterBy="#{contrato.cidadeContrato}">
+        		<h:outputText value="#{contrato.cidadeContrato}" />
+        	</p:column>
+        	
+        	<p:column headerText="Modalidade">
+        		<h:outputText value="#{contrato.modalidade}" />
+        	</p:column>
+        	
+        	<p:column headerText="Data do contrato">
+        		<h:outputText value="#{contrato.dataContrato}" />
+        	</p:column>
+        	
+        	<p:column headerText="Valor do contrato">
+        		<h:outputText value="#{contrato.valorContrato}" />
+        	</p:column>
+        	
+        	<p:column headerText="Metodo do pagamento">
+        		<h:outputText value="#{contrato.metodoPagamento}" />
+        	</p:column>
+        	
+        	<p:column headerText="Forma de pagamento">
+        		<h:outputText value="#{contrato.formaPagamento}" />
+        	</p:column>
+        	
+        	<p:column headerText="Curso contratado">
+        		<h:outputText value="#{contrato.cursoContratado}" />
+        	</p:column>
+        	
+        	<p:column headerText="Cidades">
+        		<h:outputText value="#{contrato.cidades}" />
+        	</p:column>
+        </p:dataTable>
+        
+    </h:form>
+
+</h:body>
+</html>
