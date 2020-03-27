@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 
-@Named
+
+
 @ManagedBean
 @ViewScoped
 public class FuncionariosBean implements Serializable {
