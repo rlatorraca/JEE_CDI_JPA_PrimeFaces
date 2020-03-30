@@ -13,8 +13,8 @@ import javax.inject.Named;
 
 @Named
 //@ManagedBean
-//@ViewScoped
-@SessionScoped
+@ViewScoped
+//@SessionScoped
 public class ClienteBean  implements Serializable{
 
 	private static final long serialVersionUID = 1L;

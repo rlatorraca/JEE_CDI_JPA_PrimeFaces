@@ -26,13 +26,13 @@ import com.rlsp.jee_cdi_primefaces_Demo.service.CalculadoraPreco;
  *  NAO EXISTE UM @ViewScoped em CDI
  * 
  * 
- * Scope	                                        Annotation	                                              Duration
- * Request                                        @RequestScoped                     A user's interaction with a web application in a single HTTP request.
- * Session                                        @SessionScoped                     A user's interaction with a web application across multiple HTTP requests.
- *Application                                   @ApplicationScoped                  Shared state across all users' interactions with a web application.
- * Dependent                                        @Dependent               The default scope if none is specified; it means that an object exists to serve exactly one client (bean)
+ *      Scope                                       Annotation	                                              Duration
+ *     Request                                    @RequestScoped                     A user's interaction with a web application in a single HTTP request.
+ *     Session                                    @SessionScoped                     A user's interaction with a web application across multiple HTTP requests.
+ *    Application                                @ApplicationScoped                  Shared state across all users' interactions with a web application.
+ *     Dependent                                     @Dependent               The default scope if none is specified; it means that an object exists to serve exactly one client (bean)
  *                                                                                             and has the same lifecycle as that client (bean).
- * Conversation                                   @ConversationScoped                 A user's interaction with a servlet, including JavaServer Faces applications. 
+ *    Conversation                               @ConversationScoped                 A user's interaction with a servlet, including JavaServer Faces applications. 
  *                                                                                   The conversation scope exists within developer-controlled boundaries that extend it across 
  *                                                                                   multiple requests for long-running conversations. All long-running conversations are scoped to 
  *                                                                                   a particular HTTP servlet session and may not cross session boundaries.
@@ -54,11 +54,15 @@ public class PrecoProdutoBean implements Serializable{
 	private static final long serialVersionUID = -1776577787465977402L;
 	
 	/**
-	 * INJECT
+	 * INJECT (Em CDI)
 	 * 	- Injeta um Componente / Objeto CDI (beans) dentro de outra Bean
 	 *  - Nao precisa se preocupar com instanciacao das classes
+	 *  - Possivel a INJECAO em 3 diferentes pontos:
+	 *  	a) Atributo
+	 *  	b) usando um Metodo do tipo SET do atributp
+	 *  	c) no Constructor
 	 */
-	@Inject
+	//@Inject
 	private CalculadoraPreco calculadora;
 	
 	/**
@@ -76,5 +80,29 @@ public class PrecoProdutoBean implements Serializable{
 		System.out.println(calculadora.getClass());
 		return calculadora.calcularPreco(12, 100);
 	}
+
 	
+	/**
+	 * INJECT no Constructor
+	 */
+//	
+//	public PrecoProdutoBean() {
+
+//	}
+	
+//	@Inject
+//	public PrecoProdutoBean(CalculadoraPreco calculadora) {
+//		super();
+//		this.calculadora = calculadora;
+//	}
+	
+	
+	/**
+	 * INJECT no Metodo SET
+	 */
+//	@Inject
+//	public void setCalculadora(CalculadoraPreco calculadora) {
+//		System.out.println("setCalculadora()");
+//		this.calculadora = calculadora;
+//	}
 }
