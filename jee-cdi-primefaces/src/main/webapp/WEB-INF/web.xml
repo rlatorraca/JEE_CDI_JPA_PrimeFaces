@@ -21,6 +21,12 @@
         <param-value>true</param-value>
   </context-param>
   
+  <!-- Validacao CLiente Side  com PRIME FACES --> 
+    <context-param>
+		<param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+		<param-value>true</param-value>
+  </context-param> 
+  
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head/>
+<h:body>
+	<p:messages id="msgs">
+		<p:autoUpdate/>
+	</p:messages>	
+
+	<h:form id="frm" prependId="false">
+
+		<h:panelGrid columns="3">
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" value="#{validacaoCientSideBean.nome}" required="true" >
+				<f:validateLength maximum="10" />
+				<p:clientValidator event="keyup" />
+				
+			</p:inputText>
+			<p:message for="nome" />
+			
+			<p:outputLabel value="Preço" for="preco" />
+			<p:inputText id="preco" value="#{validacaoCientSideBean.preco}" required="true" >
+				<f:validateDoubleRange maximum="100" />
+				<p:clientValidator event="keyup"/>
+			</p:inputText>
+			<p:message for="preco" />
+			
+			
+			
+			<h:outputLabel/>
+			<p:commandButton value="Cadastrar" action="#{validacaoCientSideBean.cadastrar}"
+				validateClient="true" ajax="false" update=":msgs @form" />
+		</h:panelGrid>
+		
+	</h:form>
+
+</h:body>
+</html>
+
+<!--  validateClient="true"  ==> Faz a validacao do Cliente + a mudanca  -->
+			<!--  <param-name>primefaces.CLIENTE_SIDE_VALIDATION</param-name> -->
+			<!--  Apenas funcina em componentes PRIMEFACES e nao no JSF -->
