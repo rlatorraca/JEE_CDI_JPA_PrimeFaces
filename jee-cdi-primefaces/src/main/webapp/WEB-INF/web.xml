@@ -22,10 +22,16 @@
   </context-param>
   
   <!-- Validacao CLiente Side  com PRIME FACES --> 
-    <context-param>
+   <context-param>
 		<param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
 		<param-value>true</param-value>
-  </context-param> 
+  </context-param>
+  
+  <!-- Tags Criadas pelo Desenvolvedor --> 
+  <context-param>
+		<param-name>facelets.LIBRARIES</param-name>
+		<param-value>/WEB-INF/tags/rlsp.taglib.xml</param-value>
+  </context-param>
   
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
