@@ -49,8 +49,20 @@
   </context-param>
 
   <!-- Usa a SUBMISSAO PARCIAL das partes AJAX do formulario -->
-	<context-param>
+  <context-param>
 		<param-name>primefaces.SUBMIT</param-name>
 		<param-value>partial</param-value>
-	</context-param>
+  </context-param>
+	
+<!--   <error-page>
+		<exception-type>org.jboss.weld.context.NonexistentConversationException</exception-type>
+		<location>/conversationScoped/Home.xhtml</location>
+  </error-page> -->
+  
+  <error-page>
+    <exception-type>javax.enterprise.context.NonexistentConversationException</exception-type>
+    <location>/conversationScoped/Home.xhtml?nocid=true</location>
+</error-page>
+  
+  
 </web-app>
