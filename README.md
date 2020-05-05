@@ -1,2 +1,2 @@
 # JEE_CDI_JPA_PrimeFaces
-Java EE , CDI, JPA &amp; PrimeFaces
+Examples using Java EE , CDI, JPA &amp; PrimeFaces
